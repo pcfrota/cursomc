@@ -42,8 +42,8 @@ public class Pedido implements Serializable {
 	@JoinColumn(name="endereco_de_entrega_id")
 	private Endereco enderecoDeEntrega;
 	
-	/*@OneToMany(mappedBy="id.pedido")
-	private Set<ItemPedido> itens = new HashSet<>();*/
+	@OneToMany(mappedBy="id.pedido")
+	private Set<ItemPedido> itens = new HashSet<>();
 	
 	public Pedido() {
 	}
@@ -56,13 +56,13 @@ public class Pedido implements Serializable {
 		this.enderecoDeEntrega = enderecoDeEntrega;
 	}
 
-	/*public double getValorTotal() {
+	public double getValorTotal() {
 		double soma = 0.0;
 		for (ItemPedido ip : itens) {
 			soma = soma + ip.getSubTotal();
 		}
 		return soma;
-	}*/
+	}
 	
 	public Integer getId() {
 		return id;
@@ -104,13 +104,13 @@ public class Pedido implements Serializable {
 		this.enderecoDeEntrega = enderecoDeEntrega;
 	}
 
-	/*public Set<ItemPedido> getItens() {
+	public Set<ItemPedido> getItens() {
 		return itens;
 	}
 
 	public void setItens(Set<ItemPedido> itens) {
 		this.itens = itens;
-	}*/
+	}
 	
 	@Override
 	public int hashCode() {
@@ -137,7 +137,7 @@ public class Pedido implements Serializable {
 		return true;
 	}
 	
-	/*@Override
+	@Override
 	public String toString() {
 		NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -157,5 +157,5 @@ public class Pedido implements Serializable {
 		builder.append("Valor total: ");
 		builder.append(nf.format(getValorTotal()));
 		return builder.toString();
-	}*/
+	}
 }
